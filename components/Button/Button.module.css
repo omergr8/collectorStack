@@ -1,0 +1,68 @@
+/* Button.module.css */
+.button {
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 15px;
+  font-weight: 400;
+}
+.spinnerPlaceholder {
+  position: absolute;
+  right: 5px;
+}
+/* Primary button styles */
+.buttonPrimary {
+  background-color: var(--red-200);
+  color: white; /* Ensure text color is readable on background */
+}
+
+.buttonPrimary:hover {
+  background-color: var(--red-300); /* Darker shade on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+/* Secondary button styles */
+.buttonSecondary {
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc; /* Optional border for secondary button */
+}
+
+.buttonSecondary:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  color: black; /* Keep text color readable */
+  border-color: #999; /* Darker border color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+/* Secondary button styles */
+.buttonDark {
+  background-color: var(--blue-400);
+  color: white;
+  border: 1px solid #ccc; /* Optional border for secondary button */
+}
+
+.buttonDark:hover {
+  background-color: var(--blue-100); /* Light grey background on hover */
+  border-color: #999; /* Darker border color on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+.buttonDisabled {
+  background-color: #e0e0e0; /* Light grey */
+  color: #2c2c2c !important; /* Darker grey for text */
+  cursor: not-allowed; /* Show not-allowed cursor */
+  box-shadow: none; /* Remove shadow */
+}
+
+.buttonDisabled:hover {
+  background-color: #e0e0e0; /* Same background on hover */
+  color: #a0a0a0 !important; /* Same text color on hover */
+}
+@media (max-width: 768px) {
+  .button {
+    width: 100%;
+    padding: 0 25px !important;
+  }
+}

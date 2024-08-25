@@ -1,0 +1,94 @@
+
+.box {
+  background: var(--dash-background-one);
+  border-radius: 25px;
+  padding: 80px 25px;
+}
+
+.commonBox {
+  background: var(--dash-background-one);
+  border-radius: 25px;
+  padding: 40px 40px;
+}
+
+.text h1 {
+  font-size: 37px;
+  font-weight: 600;
+  margin: 0;
+}
+.text p {
+  font-size: 15px;
+  font-weight: 300;
+  margin: 0;
+}
+.text span {
+  color: var(--red-200);
+}
+.description {
+  gap: 30px;
+  margin-bottom: 50px;
+}
+.description h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 500;
+}
+.iconBox {
+  height: 40px;
+  width: 40px;
+  background-color: var(--red-200);
+  border-radius: 50%;
+}
+.notFound {
+  gap: 10px;
+  background: var(--dash-background-one);
+  border-radius: 25px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.notFound p {
+  margin: 0;
+}
+.popupMain {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.details {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--blue-200);
+  text-transform: uppercase;
+letter-spacing: 5px;
+}
+.popupMain h2 {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--blue-200);
+}
+.popupMain span {
+  color: var(--red-200);
+}
+@media (max-width: 1000px) {
+  .box {
+    background: unset;
+    border-radius: unset;
+    padding: 40px 20px;
+  }
+  .commonBox {
+    background: var(--dash-background-one);
+    border-radius: 25px;
+    padding: 30px 20px;
+  }
+}
+@media (max-width: 768px) {
+  .text h1 {
+    font-size: 30px;
+  }
+  .text p {
+    font-size: 13px;
+  }
+  .description {
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+}

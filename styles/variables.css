@@ -1,0 +1,16 @@
+:root {
+  --red-100: #891a2f;
+  --red-200: #d30d44;
+  --red-300: #dc3f57;
+  --red-400: #e45c6a;
+  --red-status: rgba(229, 0, 0, 1);
+  --red-status-100: rgba(194, 16, 16, 1);
+
+  --blue-100: #242636;
+  --blue-200: #0c0e20;
+  --blue-300: #0b0c1b;
+  --blue-400: #03030b;
+
+  --yellow-status: rgba(227, 169, 57, 1);
+  --yellow-status-100: rgba(242, 194, 100, 1);
+}

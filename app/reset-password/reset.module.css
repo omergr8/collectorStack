@@ -1,0 +1,12 @@
+.spanText {
+  color: var(--red-200);
+}
+.box {
+  width: 65%;
+  margin: auto;
+}
+@media (max-width: 1000px) {
+  .box {
+    width: 100%;
+  }
+}

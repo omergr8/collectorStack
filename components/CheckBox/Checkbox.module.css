@@ -1,0 +1,39 @@
+.checkbox {
+  appearance: none;
+  width: 25px; /* Adjusted width */
+  height: 25px; /* Adjusted height */
+  min-width: 25px;
+  border: 1px solid #adb5bd; /* Bootstrap-like border color */
+  border-radius: 0.25rem; /* Bootstrap-like border radius */
+  background-color: #fff; /* White background */
+  position: relative;
+  margin-right: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.checkbox:checked {
+  background-color: #0d6efd; /* Bootstrap primary color */
+  border-color: #0d6efd;
+}
+
+.checkbox:checked::before {
+  content: "";
+  position: absolute;
+  top: 4px; /* Centered vertically for 30px */
+  left: 9px; /* Centered horizontally for 30px */
+  width: 8px; /* Bootstrap-like checkmark size */
+  height: 12px; /* Adjusted height for the checkmark */
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox:focus {
+  border-color: #86b7fe; /* Bootstrap focus state color */
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Bootstrap-like focus shadow */
+}
+
+.label {
+  font-size: 14px;
+}

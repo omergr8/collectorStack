@@ -1,0 +1,45 @@
+.collapsible {
+  height: 78px;
+  padding: 0 45px 0 26px;
+  border-radius: 15px;
+  background-color: var(
+    --collapsible-background
+  ); /* Example background color */
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  cursor: pointer;
+  user-select: none;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.content {
+  padding: 10px;
+  /* Optional: to distinguish between header and content */
+}
+.stickyContent {
+  position: sticky;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  overflow: auto;
+  height: 88vh;
+}
+.overlay2 {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #0c1066;
+  opacity: 0.3;
+}

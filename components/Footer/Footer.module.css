@@ -1,0 +1,10 @@
+.main {
+  background-color: rgba(0, 0, 0, var(--footer-opacity));
+  margin-top: 20px;
+}
+.fontLarge {
+  font-size: 25px;
+}
+.fontSmall {
+  font-size: 13px;
+}

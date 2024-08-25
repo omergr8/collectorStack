@@ -1,0 +1,99 @@
+.searchContainer {
+  background: var(--dash-background-one);
+  border-radius: 25px;
+}
+
+.searchBox {
+  padding: 20px 40px;
+  height: 60px;
+}
+
+.searchIcon {
+  margin-right: 10px;
+  height: 40px;
+  width: 45px;
+  background-color: var(--red-200);
+  border-radius: 50%;
+}
+
+.searchInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 16px;
+}
+
+.selectedItem {
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 16px;
+}
+
+.errorText {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--red-200);
+  text-align: left;
+  padding: 0 40px;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--red-200);
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--search-dropdown-background);
+  padding: 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  height: 450px;
+  overflow-y: auto;
+}
+
+.resultRow {
+  margin-bottom: 10px;
+}
+
+.resultRow:hover {
+  opacity: 0.8;
+}
+
+.resultRow:not(:last-child) {
+  border-bottom: 1px dashed var(--dashed-line-color);
+}
+
+.resultRow:last-child {
+  margin-bottom: 0;
+}
+
+.resultImage {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.resultText {
+  flex: 1;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+@media (max-width: 1000px) {
+  .searchBox {
+    padding: 20px 20px;
+  }
+}

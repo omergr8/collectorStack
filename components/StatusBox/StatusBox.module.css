@@ -1,0 +1,49 @@
+.statusBox {
+  height: 40px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 0 10px;
+}
+
+.text {
+  color: white !important;
+  font-size: 12px;
+  font-weight: 500;
+  margin: 0; /* Remove default paragraph margin */
+}
+
+/* Background colors based on status */
+.rejected {
+  background: var(--red-status);
+}
+
+.pending {
+  background: var(--yellow-status);
+}
+.iconBox {
+  height: 23px;
+  width: 23px;
+  border-radius: 50%;
+}
+.redIconBox {
+  background-color: var(--red-status-100);
+}
+.yellowIconBox {
+  background-color: var(--yellow-status-100);
+}
+@media (max-width: 768px) {
+  .statusBox {
+    height: 20px;
+    /* padding: 0 5px; */
+    justify-content: center !important;
+  }
+  .text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 8px;
+    font-weight: 400;
+  }
+  .iconBox {
+    display: none !important;
+  }
+}

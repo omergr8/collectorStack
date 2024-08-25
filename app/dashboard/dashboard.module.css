@@ -1,0 +1,229 @@
+.mainBox {
+  background: var(--dash-background-one);
+  border-radius: 25px;
+  padding: 27px 44px 0 38px;
+}
+.mainBoxContent {
+}
+.text h1 {
+  font-size: 37px;
+  font-weight: 600;
+}
+.text p {
+  font-size: 15px;
+  font-weight: 400;
+}
+.cardBox {
+  justify-content: flex-end;
+  gap: 10px;
+}
+.customLines {
+  position: absolute;
+  width: 100%;
+  height: 108%;
+  left: -2px;
+  top: -16px;
+  border-right: 1px solid;
+  border-image-source: var(--card-grid-lines-gradient);
+  border-image-slice: 1;
+}
+.customLinesBottom {
+  border-bottom: 0;
+  background: linear-gradient(
+      to right,
+      var(--card-grid-lines-bottom) 1px,
+      transparent 1px
+    )
+    repeat-x bottom;
+  background-size: 10px 1px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.customLinesBox {
+  position: absolute;
+  width: 4.64px;
+  height: 4.64px;
+  background: var(--card-grid-lines-box);
+  bottom: -2px;
+  right: -3px;
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+
+.cardFlex:nth-child(5n) .customLines {
+  border-right: unset !important;
+}
+.cardFlex:nth-child(5n) .customLinesBox {
+  display: none;
+}
+
+.secondaryBox {
+  margin-top: 20px;
+  background: rgba(0, 0, 0, var(--main-box-opacity));
+  border-radius: 25px 25px 0px 0px;
+  padding: 33px 30px 0 30px;
+}
+.header {
+  gap: 30px;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.filterText {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+}
+.searchIcon {
+  height: 50px;
+  width: 50px;
+  background: var(--search-icon-background);
+  border-radius: 50%;
+}
+.searchDropdown {
+  position: absolute;
+  backdrop-filter: blur(5px);
+  z-index: 5;
+  width: 440px;
+  top: 60px;
+  right: 0;
+}
+.secondaryHeader {
+  margin-bottom: 39.66px;
+  margin-top: 25px;
+}
+.secondaryFooterText1 {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+}
+.secondaryFooterText2 {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--red-200);
+  margin: 0;
+}
+.sortBy {
+  font-size: 13px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.cardFlex {
+  flex: 1;
+}
+.mobileContent,
+.mobileSidebarBox {
+  display: none;
+}
+.collapsibleDiv {
+  background: var(--collapsible-background);
+  padding: 9.69px 9.83px;
+  border-radius: 15px;
+}
+.allCard {
+  background: var(--collapsible-background);
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.mobileFooter {
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.mobileFooterText {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+}
+.emptyCollection {
+  text-align: center;
+  padding: 150px 10px 300px 10px;
+}
+.emptyHeading {
+  font-size: 37px;
+  font-weight: 600;
+}
+.emptyText {
+  font-size: 20px;
+  font-weight: 400;
+}
+.reactPaginated {
+  margin-top: 37.27px;
+  margin-bottom: 35px;
+}
+@media (min-width: 1800px) {
+  .customLines {
+    display: none;
+  }
+}
+@media (max-width: 1580px) {
+  .customLines {
+    display: none;
+  }
+}
+@media (max-width: 1400px) {
+  .mainBoxContent {
+    flex-wrap: wrap;
+    /* text-align: center;
+      justify-content: center; */
+  }
+  .searchDropdown {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+@media (max-width: 1200px) {
+  .cardBox {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
+  .header {
+    justify-content: center;
+  }
+}
+@media (max-width: 1000px) {
+  .secondaryBox {
+    display: none;
+  }
+  .mobileContent {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 23px;
+  }
+  .mainBox {
+    background: none;
+  }
+  .mobileSidebarBox {
+    display: block;
+    margin-top: 24px;
+  }
+  .text {
+    padding: 0 22px;
+    margin-top: 41px;
+    margin-bottom: 53px;
+  }
+  .text h1 {
+    font-size: 30px;
+  }
+  .text p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .secondaryBox {
+    margin-top: 10px;
+    padding: 0px;
+  }
+  .mainBox {
+    padding: 5px;
+  }
+  .cardFlex {
+    flex: 1;
+    max-width: 100%;
+  }
+}

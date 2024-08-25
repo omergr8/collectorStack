@@ -1,0 +1,65 @@
+.filterContainer {
+    height: 50px;
+    padding: 0 43px;
+    border-radius: 555px;
+    background: var(--last-card-background);
+    gap: 20px;
+    width: fit-content;
+  }
+  
+  .filterItem {
+    gap: 5px;
+  }
+  
+  .iconText {
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 400;
+  }
+  
+  .icon {
+    width: 16px; /* Adjust size as needed */
+    height: 16px; /* Adjust size as needed */
+  }
+  
+  .verticalLine {
+    height: 5px;
+    border-left: 1px solid #ccc;
+    margin-left: 15px;
+  }
+  .dropdown{
+    box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 22px 22px 0px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 49px 29px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 86px 35px 0px rgba(0, 0, 0, 0.01);
+    box-shadow: 0px 135px 38px 0px rgba(0, 0, 0, 0);
+    border-radius: 15px;
+    padding: 10px 10px 10px 10px;
+    position: absolute;
+    top: 30px;
+    right: -20px;
+    width: 155px;
+    max-height: 200px;
+    border: 1px solid var(--profile-dropdown-border);
+    background-color: var(--profile-dropdown-background);
+    backdrop-filter: blur(5px);
+    z-index: 5;
+    overflow-y: auto;
+
+  }
+  .dropdownContent{
+    margin-bottom: 10px;
+  }
+  .searchInput {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    background-color: transparent !important;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap; /* Prevents wrapping of the placeholder text */
+    overflow: hidden; /* Hides the overflowed text */
+    text-overflow: ellipsis; /* Adds ellipsis to overflowing text */
+  }
+  

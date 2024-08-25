@@ -1,0 +1,9 @@
+.spanText {
+  color: var(--red-200);
+}
+.register {
+  text-decoration: unset;
+  color: var(--red-200);
+}
+
+

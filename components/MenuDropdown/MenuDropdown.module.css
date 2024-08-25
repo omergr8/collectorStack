@@ -1,0 +1,39 @@
+.dropdownContainer {
+  padding: 40px;
+  border-radius: 25px;
+  gap: 20px;
+  background-color: var(--menu-dropdown-background);
+  max-width: 740px;
+  color: var(--foreground) !important;
+}
+
+.subLinkCategory {
+  flex: 1 1 calc(33.333% - 20px); /* Adjusts for three columns with gaps */
+  max-width: calc(33.333% - 20px);
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid var(--red-200);
+  margin-bottom: 30px;
+  width: 12px;
+}
+
+.heading {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+.link {
+  font-size: 13px;
+  font-weight: 400;
+}
+.linkBox {
+  gap: 10px;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+.icon {
+  margin-right: 8px;
+}

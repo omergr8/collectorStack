@@ -1,0 +1,38 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .arrow {
+    cursor: pointer;
+    width: 41.02px;
+    height: 41.02px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: var(--stat-icon-border-color);
+  }
+  
+  .pageNumber {
+    cursor: pointer;
+    width: 41.02px;
+    height: 41.02px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: var(--stat-icon-border-color);
+    margin-right: 5px;
+  }
+  
+  .pageNumber.active {
+    background-color: var(--red-200);
+  }
+  
+  .pageNumber:last-child {
+    margin-right: 0;
+  }
+  

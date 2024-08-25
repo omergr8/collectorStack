@@ -1,0 +1,19 @@
+.text {
+  font-size: 8px;
+  font-weight: 400;
+}
+
+.progressBarContainer {
+  position: relative;
+  flex-grow: 1;
+  height: 2px;
+  background-color: var(--stat-icon-border-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: var(--red-200);
+  transition: width 0.3s ease-in-out;
+}

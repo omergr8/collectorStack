@@ -1,0 +1,49 @@
+.stepIndicator {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  position: relative;
+}
+.stepBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.stepIcon {
+  border: 1px solid var(--step-indicator-icon-color);
+  height: 43px;
+  width: 43px;
+  min-width: 43px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.activeStepIcon {
+  border: 2px solid var(--step-indicator-active-icon-color);
+}
+.activeStep {
+  /* border: 1px solid white; */
+  height: 13px;
+  width: 13px;
+  background-color: var(--red-200);
+  border-radius: 50%;
+}
+.connectingLine {
+  width: 1px; /* Thickness of the line */
+  height: 80px; /* Height of the line */
+  background-color: var(--step-indicator-icon-color); /* Color of the line */
+  margin: 0 auto; /* Center the line horizontally */
+  position: absolute;
+  top: 52px;
+  left: 21px;
+}
+.text {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+.activeText {
+  font-weight: 700;
+}

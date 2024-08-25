@@ -1,0 +1,206 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0px;
+  padding-top: 10px;
+  margin-bottom: 44px;
+}
+/* CSS for Linksbar */
+.linkBox {
+  background-color: rgba(0, 0, 0, var(--bar-opacity));
+  border-radius: 100px;
+  height: 58px;
+  padding: 0 10px;
+
+}
+.linkItem {
+  gap: 10px;
+  height: 50px;
+  white-space: nowrap;
+  padding: 10px 15px;
+}
+.activeItem {
+  background-color: var(--red-200);
+  border-radius: 30px;
+  color: white !important;
+  font-weight: 600;
+}
+.activeItem a{
+  color: white !important;
+}
+.linkText {
+  margin-bottom: 0;
+  font-size: 13px;
+}
+.subLinksBox {
+  position: absolute;
+  width: auto; /* Change width to auto */
+  max-width: 740px;
+  top: 70px;
+  right: 0;
+  left: 300px;
+  cursor: default;
+  z-index: 1;
+}
+.badge {
+  position: absolute;
+  top: 10px;
+  right: -40px;
+  background-color: var(--primary-color); /* Adjust the color as needed */
+  color: white;
+  padding: 2px 8px;
+  font-size: 12px;
+  border-radius: 12px;
+  display: none; /* Hide badge by default */
+  z-index: 4;
+}
+/* CSS for togglebar */
+.toggleBox {
+  background-color: rgba(0, 0, 0, var(--bar-opacity));
+  border-radius: 100px;
+  gap: 15px;
+  height: 58px;
+  width: fit-content;
+  padding: 5px 12px;
+}
+
+.activeToggle {
+  background-color: var(--red-200);
+  border-radius: 50%;
+  padding: 0;
+}
+
+.toggleItem {
+  height: 45px;
+  width: 45px;
+  transition: 0.2s linear;
+}
+
+/* Desktop view - show all icons */
+.desktopToggle {
+  display: flex;
+}
+
+/* Mobile view - show only the single toggle */
+.mobileToggle {
+  display: none;
+}
+
+/* Media query for mobile view */
+@media (max-width: 1360px) {
+  .desktopToggle {
+    display: none;
+  }
+
+  .mobileToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    width: 45px;
+    cursor: pointer;
+    transition: 0.2s linear;
+  }
+}
+
+/* CSS for profile */
+.profileBox {
+  background-color: rgba(0, 0, 0, var(--bar-opacity));
+  border-radius: 100px;
+  gap: 20px;
+  height: 58px;
+  width: fit-content;
+  padding: 5px 12px;
+}
+.profileImage {
+  width: 50px; /* Ensure the width matches the image dimensions */
+  height: 50px; /* Ensure the height matches the image dimensions */
+  border-radius: 50%; /* Makes the container circular */
+  overflow: hidden; /* Ensures the image fits within the circular container */
+  display: flex; /* Centers the image within the container */
+  align-items: center;
+  justify-content: center;
+}
+.profileText > :first-child {
+  color: var(--red-200);
+  font-size: 12px;
+  font-weight: 400;
+}
+.profileText {
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+}
+.profileIcon {
+  margin-left: 15px;
+  width: 18px;
+}
+
+.dropdown {
+  box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 22px 22px 0px rgba(0, 0, 0, 0.09);
+  box-shadow: 0px 49px 29px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 86px 35px 0px rgba(0, 0, 0, 0.01);
+  box-shadow: 0px 135px 38px 0px rgba(0, 0, 0, 0);
+  border-radius: 15px;
+  padding: 20px;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 175px;
+  /* height: 100px; */
+  border: 1px solid var(--profile-dropdown-border);
+  background-color: var(--profile-dropdown-background);
+  backdrop-filter: blur(5px);
+  z-index: 5;
+}
+.dropdownLink{
+  font-size: 15px;
+}
+.dropdownLink:not(:last-child) {
+  border-bottom: 1px dashed var(--dashed-line-color);
+  padding-bottom: 10px;
+}
+/* MobileNav */
+.mobileProfile {
+  width: 45px; /* Ensure the width matches the image dimensions */
+  height: 45px; /* Ensure the height matches the image dimensions */
+  border-radius: 50%; /* Makes the container circular */
+  background-color: rgba(0, 0, 0, var(--bar-opacity));
+}
+.mobileProfile img {
+  border-radius: 50%;
+}
+.mobileHam {
+  background-color: var(--red-200);
+  height: 45px;
+  width: 45px;
+  border-radius: 40%;
+
+}
+@media (max-width: 1450px) {
+  .profileText {
+    display: none;
+  }
+}
+@media (max-width: 1300px) {
+  .hideText {
+    display: none;
+  }
+
+  /* If the parent has the activeItem class, the text is shown */
+  .activeItem .linkText {
+    display: block;
+  }
+  /* Show badge on hover */
+  .linkItem:hover:not(.activeItem) .badge {
+    display: block;
+  }
+}
+@media (max-width: 1000px) {
+  .main{
+    margin-bottom: 5px;
+  }
+}

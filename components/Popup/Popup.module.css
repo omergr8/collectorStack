@@ -1,0 +1,35 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+  }
+  
+  .popup {
+    background: white;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .closeIcon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+  }
+  .crossIcon{
+    fill: var(--red-200); /* Adjust color as needed */
+  }
+  .content {
+    margin-top: 25px; /* To avoid overlap with the close icon */
+    height: calc(100% - 40px);
+    overflow-y: auto;
+  }
+  

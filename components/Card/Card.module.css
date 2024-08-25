@@ -1,0 +1,153 @@
+.main {
+  max-width: 200px;
+}
+.imageBox {
+  padding: 20px 20px 35px 20px;
+  border-radius: 15px;
+  margin-bottom: 5px;
+}
+.imageBorder {
+  border: 1px solid var(--card-image-border-color);
+}
+.borderRed {
+  box-shadow: 0 0 0 1px var(--red-status) !important;
+}
+
+.borderYellow {
+  box-shadow: 0 0 0 1px var(--yellow-status) !important;
+}
+.status {
+  position: absolute;
+  width: 98%;
+  top: 2px;
+  left: 50%; /* Center relative to the container */
+  transform: translateX(-50%); /* Adjust for the element's own width */
+}
+.cardNumber {
+  padding: 5px;
+  background: rgba(53, 53, 53, 1);
+  position: absolute;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  bottom: 0;
+  left: 50%; /* Center relative to the container */
+  transform: translateX(-50%); /* Adjust for the element's own width */
+}
+.numberText {
+  margin: 0;
+  font-size: 9.5px;
+  font-weight: 400;
+  color: white !important;
+}
+.placeholder {
+  height: 200px;
+  width: 144px;
+}
+
+.cardImage {
+  height: 200px;
+  width: 144px;
+}
+.statusCardImage {
+  height: 160px;
+  width: 115px;
+}
+.statusImageBox {
+  padding-top: 60px;
+}
+.detailBox {
+  border-radius: 15px;
+  padding: 10px 10px 20px 10px;
+  background: rgba(0, 0, 0, var(--card-opacity));
+}
+.lastCardDetailBox {
+  background: var(--last-card-box-background) !important;
+}
+.roundedBox {
+  border-radius: 8px;
+  background: var(--card-background);
+  height: 31px;
+  padding: 0 8px;
+  /* min-width: 115px; */
+  width: 100%;
+}
+.roundedBoxYear {
+  border-radius: 8px;
+  background: var(--card-background);
+  height: 31px;
+  padding: 0 8px;
+  min-width: 46px;
+}
+.teamName {
+  font-size: 11px;
+  font-weight: 400;
+  margin: 0;
+  white-space: nowrap; /* Prevent the text from wrapping to the next line */
+  overflow: hidden; /* Hide overflowed text */
+  text-overflow: ellipsis; /* Add ellipsis (...) */
+}
+.teamYear {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--red-200);
+  margin: 0;
+}
+.cardDetails {
+}
+.name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.info {
+  font-size: 11px;
+  font-weight: 300;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cardFooter {
+  height: 10px;
+}
+.footerText {
+  font-size: 11px;
+  line-height: 18px;
+  font-weight: 600;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .mainBox {
+    display: flex;
+    gap: 10px;
+    /* gap: 10px;
+  align-items: center; */
+  }
+  .main {
+    max-width: 100%;
+  }
+  .detailBox {
+    width: 100%;
+  }
+  .cardImage {
+    height: 119px;
+    width: 86px;
+  }
+  .statusCardImage {
+    height: 95px;
+    width: 68px;
+  }
+  .placeholder {
+    height: 119px;
+    width: 86px;
+  }
+  .imageBox {
+    padding: 10px;
+    margin-bottom: 0;
+    min-width: 108px;
+  }
+}

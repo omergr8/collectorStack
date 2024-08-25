@@ -1,0 +1,18 @@
+.searchInput {
+    border: 1px solid var(--profile-dropdown-border);
+    background: var(--profile-dropdown-background);
+    height: 50px;
+    border-radius: 30px;
+    padding: 0 20px;
+    color: var(--foreground);
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+   
+  }
+  
+  .searchInput::placeholder {
+    color: var(--foreground);
+    opacity: 0.7;
+  }
+  
