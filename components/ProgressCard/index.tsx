@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
+
 import styles from "./ProgressCard.module.css";
+
 import PercentageBar from "../PercentageBar";
 import Spinner from "../Spinner";
 import Button from "../Button";
+
 import LeftArrowIcon from "@/public/icons/LeftArrowIcon.svg";
 import RightArrowIcon from "@/public/icons/RightArrowIcon.svg";
+
 import { ProgressCardProps } from "@/constants/types";
 import { percentageCalculator } from "@/constants/helper";
 import { progressText } from "@/constants/constants";
@@ -138,7 +142,7 @@ const ProgressCard: React.FC<ProgressCardProps> = ({
         </div>
       ) : (
         <div className="w-100">
-          <div className="text-start">
+          <div className={`text-start ${styles.header}`}>
             <h3 className={styles.heading}>{heading}</h3>
             <p className={`${styles.helperText} mt-3`}>{progressText}</p>
             <div className="mt-3">

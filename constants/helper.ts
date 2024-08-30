@@ -45,3 +45,38 @@ export const formatErrorMessages = (err: any): string => {
 
   return "An unexpected error occurred";
 };
+
+export const transformFiltersToQueryParams = (filters: any) => {
+  return filters.reduce((params: any, filter: any) => {
+    const { filterName, values } = filter;
+
+    const uniqueValues: string[] = [];
+
+    if (Array.isArray(values)) {
+      values.forEach((value) => {
+        // Check if the value is a string and split it if applicable
+        if (typeof value === "string") {
+          value.split("|").forEach((v: any) => {
+            if (!uniqueValues.includes(v)) {
+              uniqueValues.push(v);
+            }
+          });
+        } else if (typeof value === "number") {
+          // Convert numbers to strings and add them to the uniqueValues array
+          const numStr = value.toString();
+          if (!uniqueValues.includes(numStr)) {
+            uniqueValues.push(numStr);
+          }
+        }
+      });
+    }
+
+    if (uniqueValues.length > 0) {
+      params[filterName] = uniqueValues.join(",");
+    } else {
+      params[filterName] = "";
+    }
+
+    return params;
+  }, {});
+};

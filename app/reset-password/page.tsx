@@ -17,7 +17,6 @@ const ResetPassword = () => {
   const searchParams = useSearchParams();
 
   const token = searchParams.get("token");
-  console.log(token);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,

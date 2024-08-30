@@ -1,27 +1,67 @@
 import React, { useEffect, useState, useCallback, useRef } from "react";
+import { debounce } from "lodash";
+
 import { useAuth } from "@/hooks";
 import { userCollectedCard } from "@/api/core/userCollectedCard";
-import { getGradeDetails } from "@/constants/helper";
-import Button from "@/components/Button";
+import {
+  getGradeDetails,
+  transformFiltersToQueryParams,
+} from "@/constants/helper";
+import { FilterType } from "@/constants/types";
+
 import Card from "@/components/Card";
-import Collapsible from "@/components/Collapsible";
 import CardLayout from "@/components/Layout/CardLayout";
 import Spinner from "@/components/Spinner";
-import { useCategoryData } from "@/context/CategoryDataContext"; // Import your context
-import styles from "@/app/dashboard/dashboard.module.css";
 import toaster from "@/components/Toast/Toast";
+import MobileFilters from "../MobileFilters";
 import ReactPaginate from "react-paginate";
 
+import styles from "@/app/dashboard/dashboard.module.css";
+
+interface PaginatedProps {
+  ordering: string;
+  setOrder: (order: string) => void;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  filters: FilterType[];
+  filterStates: Array<{ filterName: string; values: (string | number)[] }>;
+  setFilterStates: React.Dispatch<
+    React.SetStateAction<
+      Array<{ filterName: string; values: (string | number)[] }>
+    >
+  >;
+}
+
 const itemsPerPage = 8;
-const PaginatedCards: React.FC = () => {
+const PaginatedCards: React.FC<PaginatedProps> = ({
+  ordering,
+  setOrder,
+  filterStates,
+  isOpen,
+  setIsOpen,
+  filters,
+  setFilterStates,
+}) => {
   const { user } = useAuth();
-  const { data, fetchCategoryData } = useCategoryData(); // Access the context
+
   const [collectedCards, setCollectedCards] = useState<any[]>([]);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [errorOccurred, setErrorOccurred] = useState(false);
+  const [triggerFetch, setTriggerFetch] = useState(false);
+  const [queryParams, setQueryParams] = useState({
+    page: 1,
+    page_size: itemsPerPage,
+    q: "",
+    ordering: ordering || "",
+  });
+  const queryParamsRef = useRef(queryParams);
   const loadingCardsRef = useRef(false);
+
+  useEffect(() => {
+    queryParamsRef.current = queryParams;
+  }, [queryParams]);
 
   const loadMoreCards = useCallback(
     async (page: number) => {
@@ -31,10 +71,9 @@ const PaginatedCards: React.FC = () => {
       setLoading(true);
       try {
         const response = await userCollectedCard(user.username).getAll({
-          page_size: itemsPerPage,
+          ...queryParamsRef.current,
           page: page,
         });
-
         // Calculate total pages
         setPageCount(Math.ceil(response.count / itemsPerPage));
 
@@ -60,6 +99,24 @@ const PaginatedCards: React.FC = () => {
   useEffect(() => {
     loadMoreCards(1); // Load the first page initially
   }, [loadMoreCards]);
+  const debouncedFetchCards = useCallback(
+    debounce(() => {
+      setCollectedCards([]);
+      loadMoreCards(1);
+    }, 600), // Adjust the debounce delay as needed
+    [loadMoreCards]
+  );
+
+  useEffect(() => {
+    if (filterStates.length > 0) {
+      setQueryParams((prevParams) => ({
+        ...prevParams,
+        ...transformFiltersToQueryParams(filterStates),
+        page: 1,
+      }));
+      debouncedFetchCards();
+    }
+  }, [filterStates]);
 
   // Handle page click event
   const handlePageClick = (event: any) => {
@@ -67,11 +124,36 @@ const PaginatedCards: React.FC = () => {
     setCurrentPage(selectedPage);
     loadMoreCards(selectedPage);
   };
+  useEffect(() => {
+    if (triggerFetch) {
+      loadMoreCards(1);
+      setTriggerFetch(false); // Reset the trigger after fetching
+    }
+  }, [triggerFetch, loadMoreCards]);
+  const handleSearch = (val: string) => {
+    setQueryParams((prevParams) => ({
+      ...prevParams,
+      ordering: ordering,
+      q: val,
+    }));
+    setCollectedCards([]);
+    setTriggerFetch(true);
+  };
 
   if (errorOccurred) return null;
 
   return (
     <div className={styles.paginatedCards}>
+      <MobileFilters
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        filters={filters}
+        filterStates={filterStates}
+        setFilterStates={setFilterStates}
+        handleSearch={handleSearch}
+        ordering={ordering}
+        setOrder={setOrder}
+      />
       {loading ? (
         <Spinner />
       ) : (

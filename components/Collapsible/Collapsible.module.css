@@ -31,7 +31,10 @@
   width: 100%;
   margin: auto;
   overflow: auto;
-  height: 88vh;
+  height: 76vh;
+  border-radius: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: unset !important;
 }
 .overlay2 {
   position: absolute;
@@ -40,6 +43,6 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: #0c1066;
+  /* background-color: #0c1066; */
   opacity: 0.3;
 }

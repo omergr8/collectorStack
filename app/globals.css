@@ -123,6 +123,12 @@ a {
   );
   --card-grid-lines-box: rgba(31, 47, 92, 1);
   --card-grid-lines-bottom: rgba(255, 255, 255, 0.1);
+  --footer-icon-box: rgba(255, 255, 255, 0.15);
+  --mobile-menu-sidebar-bg: var(--blue-200);
+  --mobile-menu-bg: rgba(0, 0, 0, 0.25);
+  --mobile-menu-link-box-bg: rgba(0, 0, 0, 0.07);
+  --mobile-filter-menu-bg: rgba(0, 0, 0, 0.8);
+  --back-button-border: rgba(255, 255, 255, 0.15);
 }
 [data-theme="light"] {
   --background: white;
@@ -166,6 +172,12 @@ a {
   );
   --card-grid-lines-box: rgba(0, 0, 0, 1);
   --card-grid-lines-bottom: rgba(0, 0, 0, 0.25);
+  --footer-icon-box: rgba(0, 0, 0, 0.15);
+  --mobile-menu-sidebar-bg: rgba(255, 255, 255, 1);
+  --mobile-menu-bg: rgba(0, 0, 0, 0.05);
+  --mobile-menu-link-box-bg: rgba(0, 0, 0, 0.07);
+  --mobile-filter-menu-bg: rgba(255, 255, 255, 0.7);
+  --back-button-border: rgba(0, 0, 0, 0.15);
 }
 .gradient-container {
   display: var(--gradient-switcher);
@@ -205,6 +217,9 @@ a {
 .logo {
   fill: var(--logo-fill); /* Apply fill color based on the current theme */
 }
+.redIcon {
+  fill: var(--red-200);
+}
 .logoStroke {
   stroke: var(--logo-fill); /* Apply fill color based on the current theme */
 }
@@ -228,7 +243,7 @@ a {
   cursor: pointer;
 }
 .footerIconHolder {
-  background-color: rgba(0, 0, 0, var(--bar-opacity));
+  background-color: var(--footer-icon-box);
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -239,7 +254,7 @@ a {
 }
 .footerLink {
   text-decoration: unset;
-  color: var(--foreground);
+  color: rgba(162, 162, 162, 1);
 }
 .authLink {
   color: var(--foreground);
@@ -300,6 +315,9 @@ a {
   }
   .authSmallerText {
     font-size: 13px;
+  }
+  .authGridTemplate {
+    grid-template-columns: 1fr;
   }
 }
 

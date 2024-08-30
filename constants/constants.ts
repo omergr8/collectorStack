@@ -499,7 +499,7 @@ export const grades: Record<
 export const sortOptions = [
   { label: "Latest Added", value: "-created_date" },
   { label: "Oldest Added", value: "created_date" },
-  { label: "Number", value: "card__number" },
+  { label: "Number", value: "card__number1" },
   { label: "Value", value: "-card__average_sale_price" },
   { label: "Card Condition", value: "-grade" },
   { label: "Year Desc", value: "-card__year" },

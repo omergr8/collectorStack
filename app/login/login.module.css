@@ -5,5 +5,8 @@
   text-decoration: unset;
   color: var(--red-200);
 }
-
-
+@media (max-width: 1000px) {
+  .main {
+    margin-top: 80px;
+  }
+}

@@ -80,11 +80,11 @@ const Card: React.FC<CardProps> = ({
         </div>
       </div>
       <div className={`${styles.detailBox} ${isSidebar && styles.lastCardDetailBox}`}>
-        <div className="d-flex align-items-center justify-content-between mb-3 gap-1">
+        <div className="d-flex align-items-center justify-content-between mb-1 mb-md-3 gap-1">
           <div
             className={`${styles.roundedBox} ${
               isFullWidth && "min-width-unset w-75"
-            } d-flex gap-1 align-items-center`}
+            } d-flex gap-3 gap-md-2 align-items-center`}
           >
             {cardIcon !== null && (
               <Image src={cardIcon} alt="cardIcon" height={16} width={16} />

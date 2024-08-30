@@ -211,7 +211,6 @@ const AddCard = () => {
         descriptionValues.player
       );
       setPopupOpen(true);
-      console.log("Custom card added successfully:", result);
     } catch (error) {
       console.error("Failed to add custom card:", error);
     } finally {
@@ -230,7 +229,6 @@ const AddCard = () => {
         backImage
       );
       setPopupOpen(true);
-      console.log("Card added successfully:", result);
     } catch (error) {
       console.error("Failed to add card:", error);
     } finally {

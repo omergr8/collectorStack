@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import RedirectIfAuthenticated from "@/providers/AuthProvider/RedirectIfAuthenticated";
+import styles from "./signup.module.css";
 
 import { signup } from "@/api/account/signup";
 import { routes } from "@/config/routes";
@@ -111,7 +112,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="d-flex container-95 align-items-center">
+    <div className={`${styles.main} d-flex container-95 align-items-center`}>
       <AuthBox>
         <SignupWizard
           step={step}

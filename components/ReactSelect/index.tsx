@@ -13,6 +13,7 @@ const ReactSelect: React.FC<SelectBoxProps> = ({
   lineColor = "green",
   error,
   required = false,
+  maxHeight,
 }) => {
   const customStyles = {
     container: (provided: any) => ({
@@ -47,7 +48,9 @@ const ReactSelect: React.FC<SelectBoxProps> = ({
     }),
     option: (provided: any, state: any) => ({
       ...provided,
-      backgroundColor: state.isSelected ? "rgba(255,255,255,0.1)" : "transparent",
+      backgroundColor: state.isSelected
+        ? "rgba(255,255,255,0.1)"
+        : "transparent",
       color: state.isSelected ? "#fff" : "#fff",
       cursor: "pointer",
     }),
@@ -84,7 +87,6 @@ const ReactSelect: React.FC<SelectBoxProps> = ({
   const [selectedOption, setSelectedOption] = useState<any>(value);
 
   const handleChange = (selected: any) => {
-    console.log(selected);
     setSelectedOption(selected);
     onChange(selected);
   };
@@ -105,6 +107,7 @@ const ReactSelect: React.FC<SelectBoxProps> = ({
             placeholder={label}
             styles={customStyles}
             components={{ IndicatorSeparator: () => null }} // Removes the default separator
+            maxMenuHeight={maxHeight || undefined}
           />
         </div>
       </div>

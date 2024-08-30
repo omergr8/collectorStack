@@ -39,16 +39,12 @@ const DragAndDrop: React.FC<DragAndDropProps> = ({
   const handleFile = async (file: File | undefined) => {
     setIsPreviewLoading(false)
     if (!file) return;
-    console.log(file);
-    console.log(file.type)
-    console.log(isSafari)
     const isHeic = file.name.toLocaleLowerCase().endsWith('.heic')
     if (isHeic && !isSafari) {
       setIsPreviewLoading(true);
       const previewImage = await heicPreview().create(file);
       setIsPreviewLoading(false);
       setHeicPreviewImage(previewImage)
-      console.log(previewImage)
     }
 
     if (file.size > maxFileSizeMB * 1024 * 1024) {

@@ -10,10 +10,12 @@ import Twitter from "@/public/icons/twitter.svg";
 
 export default function Footer() {
   return (
-    <footer className={`py-4 mx-md-3 mx-0 rounded-top-4 ${styles.main}`}>
-      <div className="container-95">
+    <footer className={`mx-md-3 mx-0 ${styles.main}`}>
+      <div>
         {/* First Row: Logo and Icons */}
-        <div className="d-flex justify-content-between align-items-center mb-3">
+        <div
+          className={`d-flex justify-content-between align-items-center ${styles.topSection}`}
+        >
           <div className="d-none d-md-flex align-items-center">
             <Logo className="logo" />
           </div>
@@ -21,13 +23,13 @@ export default function Footer() {
             <MobileLogo className="logo" />
           </div>
           <div className="d-flex align-items-center gap-1">
-            <div className="iconHolder">
+            <div className={styles.iconBox}>
               <Facebook className="logo" />
             </div>
-            <div className="iconHolder">
+            <div className={styles.iconBox}>
               <Insta className="logo" />
             </div>
-            <div className="iconHolder">
+            <div className={styles.iconBox}>
               <Twitter className="logo" />
             </div>
           </div>
@@ -37,18 +39,18 @@ export default function Footer() {
         <hr className="dotted-line m-0" />
 
         {/* Second Row: Heading, Paragraph, and Logos */}
-        <div className="row align-items-center">
+        <div className={`row align-items-center ${styles.midSection}`}>
           <div className="col-md-6 d-flex align-items-center">
-            <div>
+            <div className={styles.midSectionText}>
               <h5 className={`mb-2 ${styles.fontLarge}`}>Collector Stack</h5>
-              <p className={`mb-4 ${styles.fontSmall}`}>
+              <p className={`m-0 ${styles.fontSmall}`}>
                 Manage, Share and Discover the Value of Your Most Valuable
                 Sports Cards
               </p>
             </div>
           </div>
           <div className="col-md-6 d-flex justify-content-start  justify-content-md-end">
-            <div className="d-flex flex-column flex-md-row  flex-wrap gap-4 ">
+            <div className="d-flex flex-column flex-md-row  flex-wrap gap-1 gap-md-4 ">
               {links.map((link, i) => {
                 const IconComponent = link.icon;
                 return (
@@ -68,16 +70,16 @@ export default function Footer() {
         </div>
 
         {/* Horizontal Line */}
-        <hr className="dotted-line" />
+        <hr className="dotted-line m-0 d-none d-md-block" />
 
         {/* Third Row: Footer Text and Links */}
-        <div className="row">
-          <div className="col-md-6 text-md-start text-center mb-4 mb-md-0 ">
+        <div className={`row ${styles.lastSection}`}>
+          <div className="col-md-6 text-md-start text-center ">
             <p className={`mb-0 ${styles.fontSmall}`}>
               @ 2024 Collector Stack. All rights reserved.
             </p>
           </div>
-          <div className="col-md-6 d-flex justify-content-md-end justify-content-center">
+          <div className={`col-md-6 d-flex justify-content-md-end justify-content-center ${styles.bottomLinks}`}>
             <Link href="/terms" className="mx-2 footerLink" passHref>
               <span className={`${styles.fontSmall}`}>Terms Policy</span>
             </Link>

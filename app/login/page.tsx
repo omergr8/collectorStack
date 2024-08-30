@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className={styles.main}>
       <AuthBox>
         <h3 className={`authTitle`}>
           <span className={styles.spanText}>Hello, </span> {authText.title}

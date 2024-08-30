@@ -14,9 +14,14 @@ import toaster from "@/components/Toast/Toast";
 interface CategoryCardsProps {
   category: string;
   name: string;
+  handleSeeMore: (orderBy: string) => void;
 }
 
-const CategoryCards: React.FC<CategoryCardsProps> = ({ category, name }) => {
+const CategoryCards: React.FC<CategoryCardsProps> = ({
+  category,
+  name,
+  handleSeeMore,
+}) => {
   const { user } = useAuth();
   const { data, fetchCategoryData } = useCategoryData(); // Access the context
   const [loading, setLoading] = useState(false);
@@ -105,7 +110,7 @@ const CategoryCards: React.FC<CategoryCardsProps> = ({ category, name }) => {
           })}
         </CardLayout>
         <Button
-          onClick={() => console.log("See more clicked")}
+          onClick={() => handleSeeMore(getOrderParam(category))}
           customClass="mt-3 w-100"
           type="secondary"
         >

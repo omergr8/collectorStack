@@ -56,18 +56,28 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
           try {
             const profile = await fetchUserProfile();
             setUser(profile);
-            const lastCollectedCard = await collectedCard.getLast();
-            setLastCard(lastCollectedCard);
             setIsAuthenticated(true);
             setLoadingPercentage(70);
+
+            try {
+              const lastCollectedCard = await collectedCard.getLast();
+              setLastCard(lastCollectedCard);
+            } catch (error) {
+              console.warn("Failed to fetch the last collected card:", error);
+              // You can optionally show a toaster warning here
+              toaster.warning(
+                "Could not load the last collected card. It may be empty, or there might be a network issue."
+              );
+              setLastCard(null); // You can set this to null if needed
+            }
           } catch (error) {
-            console.error("Error fetching user profile or last card:", error);
+            console.error("Error fetching user profile:", error);
             toaster.error(
-              "Failed to load your profile or last card. Please check your connection."
+              "Failed to load your profile. Please check your connection."
             );
             setIsAuthenticated(false);
             setUser(null);
-            setLastCard(null);
+            setLastCard(null); // Optional: clear last card if profile fails
           }
         }
 
@@ -138,7 +148,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         loading,
         loadingPercentage,
         sportstype,
-        lastCard
+        lastCard,
       }}
     >
       {children}

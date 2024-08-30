@@ -242,6 +242,7 @@ export interface SelectBoxProps {
   error?: string | undefined;
   required?: boolean;
   multiSelect?: boolean;
+  maxHeight?: number;
 }
 
 export interface DragAndDropProps {

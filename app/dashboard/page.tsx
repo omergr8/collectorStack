@@ -32,22 +32,19 @@ import SearchInput from "@/components/SearchInput";
 import CategoryCards from "@/components/CategoryCards";
 import PaginatedCards from "@/components/PaginatedCards";
 
-import { dashText, sampleCardsData, sortOptions } from "@/constants/constants";
+import { dashText, sortOptions } from "@/constants/constants";
 import { routes } from "@/config/routes";
+import { transformFiltersToQueryParams } from "@/constants/helper";
 import { useIsMobile } from "@/hooks";
 
 import Copy from "@/public/icons/NumberCard.svg";
 import Star from "@/public/icons/star.svg";
 import Search from "@/public/icons/search.svg";
-import NoGrade from "@/public/icons/Grades/noGrade.svg";
-import CardIcon from "@/public/icons/cardIcon.svg";
-import AdvanceFilter from "@/public/icons/advanceFilter.svg";
 import MobileFilter from "@/public/icons/mobileFilter.svg";
-import Arrow from "@/public/icons/redDownArrow.svg";
 
 import styles from "./dashboard.module.css";
-import { toast } from "react-toastify";
 import toaster from "@/components/Toast/Toast";
+import MobileFilters from "@/components/MobileFilters";
 // Define initial page size and state
 const initialPageSize = 5;
 
@@ -59,17 +56,16 @@ const Dashboard = () => {
   const searchDropdownRef = useRef<HTMLDivElement | null>(null);
   const loadingCardsRef = useRef(false);
   const [isAll, setIsAll] = useState(false);
-  const [itemOffset, setItemOffset] = useState(0);
-  const [currentItems, setCurrentItems] = useState<any>(null);
+  const [isMobileFilter, setIsMobileFilter] = useState(false);
   const [filters, setFilters] = useState([]);
   const [filterStates, setFilterStates] = React.useState<
     Array<{ filterName: string; values: (string | number)[] }>
   >([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchDropdown, setSearchDropdown] = useState(false);
-  const [pageCount, setPageCount] = useState(0);
   const [collectedCards, setCollectedCards] = useState<any[]>([]);
   const [sortOption, setSortOption] = useState<string>("-created_date");
+  const [orderBy, setOrderBy] = useState<string>("");
   const [pageNumber, setPageNumber] = useState(1);
   const [queryParams, setQueryParams] = useState({
     page: 1,
@@ -104,6 +100,10 @@ const Dashboard = () => {
   const test = () => {};
   const onButtonClick = (filter: string) => {
     setIsAll(true);
+  };
+
+  const handleSeeMore = (orderBy: string) => {
+    setOrderBy(orderBy);
   };
 
   const fetchCards = useCallback(async () => {
@@ -194,41 +194,6 @@ const Dashboard = () => {
     }
   };
 
-  const transformFiltersToQueryParams = (filters: any) => {
-    return filters.reduce((params: any, filter: any) => {
-      const { filterName, values } = filter;
-
-      const uniqueValues: string[] = [];
-
-      if (Array.isArray(values)) {
-        values.forEach((value) => {
-          // Check if the value is a string and split it if applicable
-          if (typeof value === "string") {
-            value.split("|").forEach((v: any) => {
-              if (!uniqueValues.includes(v)) {
-                uniqueValues.push(v);
-              }
-            });
-          } else if (typeof value === "number") {
-            // Convert numbers to strings and add them to the uniqueValues array
-            const numStr = value.toString();
-            if (!uniqueValues.includes(numStr)) {
-              uniqueValues.push(numStr);
-            }
-          }
-        });
-      }
-
-      if (uniqueValues.length > 0) {
-        params[filterName] = uniqueValues.join(",");
-      } else {
-        params[filterName] = "";
-      }
-
-      return params;
-    }, {});
-  };
-
   useEffect(() => {
     queryParamsRef.current = queryParams;
   }, [queryParams]);
@@ -240,6 +205,12 @@ const Dashboard = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if (orderBy !== "") {
+      setIsAll(true);
+    }
+  }, [orderBy]);
 
   const handleClickOutside = (e: MouseEvent) => {
     if (
@@ -325,13 +296,6 @@ const Dashboard = () => {
   }, [user]);
 
   useEffect(() => {
-    // Fetch items from another resources.
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(sampleCardsData.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(sampleCardsData.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
-
-  useEffect(() => {
     if (triggerFetch) {
       fetchCards();
       setTriggerFetch(false); // Reset the trigger after fetching
@@ -348,14 +312,6 @@ const Dashboard = () => {
       debouncedFetchCards();
     }
   }, [filterStates]);
-
-  const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * itemsPerPage) % sampleCardsData.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
-    setItemOffset(newOffset);
-  };
 
   const handleSortChange = (value: string) => {
     setSortOption(value);
@@ -377,9 +333,6 @@ const Dashboard = () => {
     setCollectedCards([]); // Reset cards on new search
     setTriggerFetch(true); // Trigger the fetch after updating queryParams
   };
-
-  const limitedCardsData =
-    sampleCardsData.length >= 3 ? sampleCardsData.slice(0, 3) : sampleCardsData;
 
   return (
     <main>
@@ -430,7 +383,8 @@ const Dashboard = () => {
                   paddingX="10px"
                   backgroundColor="var(--red-200)"
                   hoverColor="rgba(211, 13, 68, .6)"
-                  onClick={test}
+                  color="white"
+                  onClick={() => setIsMobileFilter(true)}
                   width="170px"
                 />
                 <div className="position-relative">
@@ -441,7 +395,15 @@ const Dashboard = () => {
                   <p className={styles.mobileFooterText}>(48 items found)</p>
                 </div>
               </div>
-              <PaginatedCards />
+              <PaginatedCards
+                ordering={orderBy}
+                setOrder={setOrderBy}
+                filterStates={filterStates}
+                isOpen={isMobileFilter}
+                setIsOpen={setIsMobileFilter}
+                filters={filters}
+                setFilterStates={setFilterStates}
+              />
             </div>
           ) : (
             <>
@@ -455,14 +417,20 @@ const Dashboard = () => {
                       View my all colection
                     </Button>
                   </div>
-                  <CategoryCards name="Recently added" category="latest" />
+                  <CategoryCards
+                    name="Recently added"
+                    category="latest"
+                    handleSeeMore={handleSeeMore}
+                  />
                   <CategoryCards
                     name="Currently popular"
                     category="currentlyPopular"
+                    handleSeeMore={handleSeeMore}
                   />
                   <CategoryCards
                     name="Increasing its value"
                     category="increasingSales"
+                    handleSeeMore={handleSeeMore}
                   />
                 </div>
               )}

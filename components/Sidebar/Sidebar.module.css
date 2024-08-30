@@ -1,7 +1,7 @@
 .main {
   background: rgba(0, 0, 0, var(--bar-opacity));
   max-width: 280px;
-  padding: 68.84px 0 20.79px 0;
+  padding: 35px 0 20.79px 0;
   border-radius: 20px;
 }
 .box {

@@ -29,7 +29,6 @@ const SearchBox: React.FC<SearchBoxProps> = ({
 
       try {
         const searchResults = await onSearch(searchQuery);
-        console.log("test", searchResults);
         setResults(searchResults);
         setShowDropdown(true);
       } catch (error) {
@@ -69,7 +68,6 @@ const SearchBox: React.FC<SearchBoxProps> = ({
     setSelectedData(undefined);
     setQuery(""); // Clear the input field
   };
-  console.log(selectedData);
   return (
     <div className={`${styles.searchContainer} position-relative w-100`}>
       <div

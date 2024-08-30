@@ -6,7 +6,11 @@ import DotIcon from "@/public/icons/threeDots.svg";
 import { useAuth } from "@/hooks";
 import { profileLinks } from "@/constants/constants";
 
-const Profile = () => {
+interface ProfileProps {
+  isMenu?: boolean;
+}
+
+const Profile = ({ isMenu = false }: ProfileProps) => {
   const { user, logout } = useAuth();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isDropdown, setIsDropdown] = useState<boolean>(false);
@@ -35,24 +39,37 @@ const Profile = () => {
 
   return (
     <div
-      className={`${styles.profileBox} d-flex align-items-center position-relative`}
+      className={`${styles.profileBox} ${
+        isMenu && styles.menuProfileBox
+      }  d-flex align-items-center position-relative ${
+        isMenu && "w-100 justify-content-between"
+      }`}
     >
-      <div
-        className={`${styles.profileImage} overflow-hidden d-flex align-items-center justify-content-center`}
-      >
-        <Image
-          src="/images/avatar.jpg"
-          height={50}
-          width={50}
-          alt="Profile"
-          // Add placeholder to ensure proper rendering if image takes time
-          placeholder="blur"
-          blurDataURL="/images/avatar.jpg" // Optional: low-res image for placeholder
-        />
-      </div>
-      <div className={styles.profileText}>
-        <p className="mb-0">Welcome</p>
-        <p className="mb-0">{userName}</p>
+      <div className="d-flex align-items-center gap-3">
+        <div
+          className={`${styles.profileImage} ${
+            isMenu && styles.menuProfileImage
+          } overflow-hidden d-flex align-items-center justify-content-center`}
+        >
+          <Image
+            src="/images/avatar.jpg"
+            className={`${isMenu && styles.menuProfileImage}`}
+            height={50}
+            width={50}
+            alt="Profile"
+            // Add placeholder to ensure proper rendering if image takes time
+            placeholder="blur"
+            blurDataURL="/images/avatar.jpg" // Optional: low-res image for placeholder
+          />
+        </div>
+        <div
+          className={`${!isMenu && styles.profileTextNav} ${
+            styles.profileText
+          }`}
+        >
+          <p className="mb-0">Welcome</p>
+          <p className="mb-0">{userName}</p>
+        </div>
       </div>
       <div ref={dropdownRef}>
         <div

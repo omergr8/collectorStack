@@ -1,0 +1,128 @@
+.sidebar {
+  position: fixed;
+  top: 60px;
+  right: -100%;
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: var(--mobile-filter-menu-bg);
+  backdrop-filter: blur(5px);
+  transition: right 0.3s ease;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  padding: 41.33px 31.22px 68px 29.74px;
+}
+.header {
+  margin-bottom: 51px;
+}
+.headerText {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.searchInput {
+}
+.filterBox {
+  margin-top: 36px;
+}
+.filter {
+  margin-top: 20px;
+}
+.filter p {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.showSidebar {
+  right: 0; /* Slide in the sidebar */
+}
+
+.sidebarContent {
+  overflow-y: auto;
+  flex: 1;
+}
+.profileBox {
+  margin-bottom: 15px;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background: rgba(0, 0, 0, 0.5); */
+  z-index: 8; /* Below the navbar and sidebar */
+}
+.menu {
+  padding: 33.26px 20px 25.16px 20px;
+  text-align: center;
+  background-color: var(--mobile-menu-bg);
+  border-radius: 25px;
+}
+.heading {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 10px;
+  margin: 0;
+  margin-bottom: 26.5px;
+}
+.linkBox {
+  border-radius: 15px;
+  padding: 26.51px 32px 26.51px 25px;
+  gap: 15px;
+  background: var(--mobile-menu-link-box-bg);
+  cursor: pointer;
+  /* background: gray; */
+}
+.activeItem {
+  background: var(--red-200) !important;
+}
+.linkBox p {
+  margin: 0;
+}
+.linkText {
+  font-size: 16px;
+  font-weight: 400;
+}
+.activeLinkText {
+  font-weight: 600;
+  color: white !important;
+}
+.footer {
+  /* width: 90%;
+  margin: auto; */
+}
+.footerBox {
+
+}
+
+.selectedBox {
+
+}
+.filterCheckbox{
+  height: 250px;
+  overflow: auto;
+}
+.selectedHeading {
+  font-size: 25px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+.dropdownContent {
+  margin-bottom: 13px;
+}
+.checkboxSepartor {
+  margin: 0;
+  margin-top: 13px;
+}
+.back {
+  gap: 12px;
+  border: 1px solid var(--back-button-border);
+  padding: 8px 25px;
+  border-radius: 25px;
+}
+.back p {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}

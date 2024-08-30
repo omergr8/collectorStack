@@ -4,7 +4,11 @@ import { useTheme } from "next-themes";
 import styles from "./Navbar.module.css";
 import { toggleMode } from "@/constants/constants";
 
-export default function Toggle() {
+interface ToggleProps {
+  isMenu?: boolean;
+}
+
+export default function Toggle({ isMenu = false }: ToggleProps) {
   const [toggle, setToggle] = useState<string>("dark");
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -37,17 +41,23 @@ export default function Toggle() {
         className={`${styles.toggleBox} d-flex align-items-center justify-content-center`}
       >
         {/* For mobile view, show only the current mode's icon */}
-        <div
-          className={`${styles.mobileToggle} ${
-            toggle === currentMode?.name && styles.activeToggle
-          }`}
-          onClick={onToggle}
-        >
-          {currentMode && <currentMode.icon style={{ fill: "white" }} />}
-        </div>
+        {!isMenu && (
+          <div
+            className={`${styles.mobileToggle} ${
+              toggle === currentMode?.name && styles.activeToggle
+            }`}
+            onClick={onToggle}
+          >
+            {currentMode && <currentMode.icon style={{ fill: "white" }} />}
+          </div>
+        )}
 
         {/* For desktop view, show both icons */}
-        <div className={styles.desktopToggle}>
+        <div
+          className={`${
+            isMenu ? styles.desktopToggleMenu : styles.desktopToggle
+          }`}
+        >
           {toggleMode.map((mode, i) => {
             const IconComponent = mode.icon;
             return (
@@ -59,7 +69,9 @@ export default function Toggle() {
                 onClick={() => onToggle()}
               >
                 <IconComponent
-                  className={`${toggle === mode.name ? 'fill-white' : "toggleIcon"}`}
+                  className={`${
+                    toggle === mode.name ? "fill-white" : "toggleIcon"
+                  }`}
                 />
               </div>
             );
